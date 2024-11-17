@@ -1,25 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Recipes</title>
+  <link rel="stylesheet" href="stil.css">
 </head>
 <body>
-    <div class="menu">
-    <nav>
-        <ul type="bullet">
-            <li><a href="Registration">Registration</a></li>
-            <li><a href="Desserts">Desserts</a></li>
-            <li><a href="Best meals">Best meals</a></li>
-            <li><a href="Healthy Recipes">Healthy Recipes</a></li>
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">SimpleMeals</a>
+      <div class="menu">
+        <ul>
+          <li><a href="deserts.html">Dessert Page</a></li>
+          <li><a href="salty.html">Salty Recipes</a></li>
         </ul>
-    </nav><hr></div>
-    <header>
-        <h1>Welcome to the best recipe website</h1>
-    </header><hr>
-    
-
-    <footer>(c) SimpleRecepies 2024. All rights reserved.</footer>
+        <a href="registration.html" class="register-btn">Register</a>
+      </div>
+    </div>
+  </nav>
+  <header>
+    <div class="header-left">
+      <h2>
+        Search for new healthy and fun recepies to cook for you and your loved ones
+      </h2>
+      <p>
+        Simple and Fast Recipies that will make you Fall in Love with Cooking 
+      </p>
+    </div>
+    <div class="header-right">
+      <img src="./images/header_image.jfif" alt="header image">
+    </div>
+  </header><hr>
+  <div class="Features">
+    <div class="feat-left">
+      <div class="feat-card">
+        <h3><center>About our foods</center></h3>
+        <p><center>
+          We guarantee that you will like every bite of your food. Every recipe on this website was selected and prepared with love.
+          Our mission is to show you how fun it is to express yourself with cooking, choosing only the best ingredients so that every meal that you make is healthy.
+          Secret to a good recipe is quality. Eery one of our recipes is inspired by natures freshness and flavours, with ingredients carefully selected and sourced from local origins.
+          For us, the quality is what every recipe is based on, and that is the reason why we chose only the best ingredients, those coming directly from nature.
+        </center></p>
+      </div>
+    </div>
+    <div class="feat-right">
+      <img src="./images/about.jpg" alt="image one">
+    </div>
+  </div>  
+    <div class="testimonial">
+      <h2>What people say about our food</h2>
+      <div class="reviews">
+        <div class="customer-review">
+          <div class="rating">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star un-checked"></span>
+          </div>
+          <p>
+            The food at DeliciousDishes is simply amazing. I can't get
+            enough!
+          </p>
+          <div class="customer-card">
+            <img src="./images/jenna.jpg" alt="customer">
+            <h3>
+              Jenna Ortega 
+            </h3>
+          </div>
+        </div>
+        <div class="customer-review">
+          <div class="rating">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+          </div>
+          <p>
+            I've never tasted such incredible flavors. Delicious Dishes is a
+            must-visit!
+          </p>
+          <div class="customer-card">
+            <img src="./images/rock.jpg" alt="customer">
+            <h3>
+              Dwayne Rock Johnson 
+              <br><br><br>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div><br>
+  <footer>
+    <div class="top">
+      <div class="top-left">
+        <h2><a href="#">SimpleMeals</a></h2>
+      </div>
+      <div class="top-center">
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="bottom">
+      <span>&copy; 2024 SimpleMeals. All rights reserved.</span>
+      <ul>
+        <li><a href="#">Privacy Policy.</a></li>
+        <li><a href="#">Terms and Conditions</a></li>
+        <li><a href="#">Cookie Policy.</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
-</html> 
+</html>
