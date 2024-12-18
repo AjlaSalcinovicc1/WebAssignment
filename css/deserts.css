@@ -155,6 +155,53 @@ tr:hover {
   background-color: #f1c6b5;
   color: white;
 }
+/* Accordion Styling */
+.accordion {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-item {
+  border-bottom: 1px solid #ccc;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-button {
+  background-color: #f1f1f1;
+  color: #333;
+  cursor: pointer;
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.accordion-button:hover {
+  background-color: #ddd;
+}
+
+.accordion-content {
+  padding: 0 15px;
+  display: none; /* Hidden by default */
+  background-color: #f9f9f9;
+  padding-bottom: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.accordion-content p {
+  margin: 10px 0;
+}
 
 .comments-aside {
   width: 300px;

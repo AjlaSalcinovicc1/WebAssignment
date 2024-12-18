@@ -1,0 +1,25 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "The Ultimate Guide to Salty Recipes",
+      "author": "John Doe",
+      "date": "2024-12-15",
+      "content": "Explore some of the most delicious salty meals from around the world. From fried chicken to lasagna, we've got it all!"
+    },
+    {
+      "id": 2,
+      "title": "Mozzarella Sticks: The Perfect Snack",
+      "author": "Jane Smith",
+      "date": "2024-12-10",
+      "content": "These mozzarella sticks are the perfect crispy snack. Learn how to make them from scratch and impress your guests."
+    },
+    {
+      "id": 3,
+      "title": "How to Make the Best Pepperoni Pizza",
+      "author": "Chef Mark",
+      "date": "2024-12-05",
+      "content": "Master the art of pizza-making with this simple yet delicious pepperoni pizza recipe. A crispy crust with just the right amount of spice!"
+    }
+  ]
+}

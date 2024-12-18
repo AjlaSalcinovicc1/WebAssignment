@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Registration  </title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
   <div class="container">
@@ -56,5 +56,89 @@
       </form>
     </div>
   </div>
+  <div class="contact-form">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+        <div class="invalid-feedback">Please enter your Name.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+        <div class="invalid-feedback">Enter a valid email.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="dob" class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" name="dob" required>
+        <div class="invalid-feedback">Date of birth is required.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+        <div class="invalid-feedback">Enter your password.</div>
+        <div id="password-strength" class="mt-2"></div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.js"></script>
+  <script>  
+    registrationForm.addEventListener('submit', function(event) {
+      event.preventDefault(); 
+      const emailValid = validateEmail(emailField);
+      const passwordValid = validatePassword(passwordField);
+      const passwordsMatch = validatePasswordsMatch(passwordField, confirmPasswordField);
+      if (emailValid && passwordValid && passwordsMatch) {
+        alert('Form submitted successfully!');
+        registrationForm.reset();
+      }
+    });
+    function validateEmail(email) {
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if (!emailRegex.test(email.value)) {
+        email.classList.add('is-invalid');
+        return false;
+      }
+      email.classList.remove('is-invalid');
+      return true;
+    }
+    function validatePassword(password) {
+      const strength = zxcvbn(password.value);
+      let strengthText = '';
+      let strengthClass = '';
+      
+      if (strength.score < 2) {
+        strengthText = 'Weak password';
+        strengthClass = 'weak';
+      } else if (strength.score < 4) {
+        strengthText = 'Medium strength password';
+        strengthClass = 'medium';
+      } else {
+        strengthText = 'Strong password';
+        strengthClass = 'strong';
+      }
+
+      passwordStrengthDisplay.textContent = strengthText;
+      passwordStrengthDisplay.className = strengthClass;
+
+      if (strength.score < 2) {
+        password.classList.add('is-invalid');
+        return false;
+      }
+      password.classList.remove('is-invalid');
+      return true;
+    }
+
+    passwordField.addEventListener('input', function() {
+      validatePassword(passwordField);
+    });
+  </script>
 </body>
 </html>
