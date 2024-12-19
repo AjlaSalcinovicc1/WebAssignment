@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Details about recipes</title>
+  <link rel="stylesheet" href="./css/stil.css">
+  <style>
+    header{
+        height: 200px;
+    }
+    .recipe-content {
+      display: flex;
+      align-items: center; 
+      padding: 20px; 
+    }
+    .recipe-image {
+      flex: 1; 
+      max-width: 500px;
+      margin-right: 20px; 
+    }
+    .recipe-description {
+      flex: 2; 
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">SimpleMeals</a>
+      <div class="menu">
+        <ul>
+          <li><a href="deserts.html">Dessert Page</a></li>
+          <li><a href="salty.html">Salty Recipes</a></li>
+          <li><a href="index.html">Main Page</a></li>
+        </ul>
+        <a href="registration.html" class="register-btn">Register</a>
+      </div>
+    </div>
+  </nav>
+  <header>
+    <h1>Some details about this recipe</h1>
+  </header>
+  <div class="recipe-content">
+    <img id="recipe-image" class="recipe-image" alt="Recipe Image">
+    <div class="recipe-description">
+      <h2 id="recipe-title"></h2>
+      <p id="recipe-description"></p>
+    </div>
+  </div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const recipeName = urlParams.get('recipe');
+    if (recipeName) {
+      const recipes = {
+        "Grilled Chicken": {
+          image: "./images/gallery/piletina.jpg",
+          description: "Delicious grilled chicken with a blend of spices and herbs."
+        },
+        "Pancake": {
+          image: "./images/gallery/palacinak.jpg",
+          description: "Fluffy pancakes served with syrup and fresh fruits."
+        },
+        "Cake": {
+          image: "./images/gallery/torta.jpg",
+          description: "A rich and moist chocolate cake perfect for any occasion."
+        }
+      };
+      const recipe = recipes[recipeName];
+      if (recipe) {
+        document.getElementById('recipe-title').innerText = recipeName;
+        document.getElementById('recipe-image').src = recipe.image;
+        document.getElementById('recipe-description').innerText = recipe.description;
+      }
+    }
+  </script>
+</body>
+</html>

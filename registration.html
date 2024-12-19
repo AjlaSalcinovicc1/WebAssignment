@@ -3,40 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Registration  </title>
+  <title>Registration and Contact Us</title>
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <body>
   <div class="container">
     <div class="title">Register here to send us your favorite recipes!</div>
     <div class="content">
-      <form action="#">
+      <form id="registrationForm">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
-            <input type="text" placeholder="Enter your name" required>
+            <input type="text" id="Name" placeholder="Enter your name" required>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" placeholder="Enter your email" required>
+            <input type="text" id="Email" placeholder="Enter your email" required>
           </div>
           <div class="input-box">
             <span class="details">Username</span>
-            <input type="text" placeholder="Enter your username" required>
+            <input type="text" id="Username" placeholder="Enter your username" required>
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text" placeholder="Enter your number" required>
+            <input type="text" id="Phone" placeholder="Enter your number" required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Enter your password" required>
+            <input type="password" id="Password" placeholder="Enter your password" required>
           </div>
         </div>
         <div class="gender-details">
           <input type="radio" name="gender" id="dot-1">
           <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
           <span class="gender-title">Gender</span>
           <div class="category">
             <label for="dot-1">
@@ -51,93 +53,78 @@
         </div>
         <div class="button">
           <input type="submit" value="Register"><br><br>
-          <input type="submit" value="Clear all">
+          <input type="reset" value="Clear all">
         </div>
       </form>
     </div>
   </div>
+
   <div class="contact-form">
     <h2>Contact Us</h2>
     <form id="contactForm">
       <div class="mb-3">
         <label for="name" class="form-label">Full Name</label>
         <input type="text" class="form-control" id="name" name="name" required>
-        <div class="invalid-feedback">Please enter your Name.</div>
       </div>
 
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <input type="email" class="form-control" id="email" name="email" required>
-        <div class="invalid-feedback">Enter a valid email.</div>
       </div>
 
       <div class="mb-3">
         <label for="dob" class="form-label">Date of Birth</label>
         <input type="date" class="form-control" id="dob" name="dob" required>
-        <div class="invalid-feedback">Date of birth is required.</div>
       </div>
 
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" name="password" required>
-        <div class="invalid-feedback">Enter your password.</div>
-        <div id="password-strength" class="mt-2"></div>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.js"></script>
-  <script>  
-    registrationForm.addEventListener('submit', function(event) {
-      event.preventDefault(); 
-      const emailValid = validateEmail(emailField);
-      const passwordValid = validatePassword(passwordField);
-      const passwordsMatch = validatePasswordsMatch(passwordField, confirmPasswordField);
-      if (emailValid && passwordValid && passwordsMatch) {
-        alert('Form submitted successfully!');
-        registrationForm.reset();
+  <script>
+    toastr.options = {
+      closeButton: true,
+      progressBar: true,
+      positionClass: "toast-bottom-right",
+      timeOut: "5000"
+    };
+    document.getElementById('registrationForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const Name = document.getElementById('Name').value.trim();
+      const Email = document.getElementById('Email').value.trim();
+      const Username = document.getElementById('Username').value.trim();
+      const Phone = document.getElementById('Phone').value.trim();
+      const Password = document.getElementById('Password').value.trim();
+
+      if (!Name || !Email || !Username || !Phone || !Password) {
+        toastr.error("Please fill out all fields in the registration form.");
+        return;
       }
+
+      toastr.success("Registration completed successfully!");
+      this.reset();
     });
-    function validateEmail(email) {
-      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-      if (!emailRegex.test(email.value)) {
-        email.classList.add('is-invalid');
-        return false;
-      }
-      email.classList.remove('is-invalid');
-      return true;
-    }
-    function validatePassword(password) {
-      const strength = zxcvbn(password.value);
-      let strengthText = '';
-      let strengthClass = '';
-      
-      if (strength.score < 2) {
-        strengthText = 'Weak password';
-        strengthClass = 'weak';
-      } else if (strength.score < 4) {
-        strengthText = 'Medium strength password';
-        strengthClass = 'medium';
-      } else {
-        strengthText = 'Strong password';
-        strengthClass = 'strong';
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const dob = document.getElementById('dob').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!name || !email || !dob || !password) {
+        toastr.error("Please fill out all fields in the contact form.");
+        return;
       }
 
-      passwordStrengthDisplay.textContent = strengthText;
-      passwordStrengthDisplay.className = strengthClass;
-
-      if (strength.score < 2) {
-        password.classList.add('is-invalid');
-        return false;
-      }
-      password.classList.remove('is-invalid');
-      return true;
-    }
-
-    passwordField.addEventListener('input', function() {
-      validatePassword(passwordField);
+      toastr.success("Your message has been submitted successfully!");
+      this.reset();
     });
   </script>
 </body>
