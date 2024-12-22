@@ -84,6 +84,11 @@
 
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+  </div><br><hr>
+
+  <div id="content-area">
+    <h2>Latest Blog Posts</h2>
+    <div id="posts"></div> 
   </div>
 
   <script>
@@ -126,6 +131,40 @@
       toastr.success("Your message has been submitted successfully!");
       this.reset();
     });
+    function loadBlogPosts() {
+  $.ajax({
+    url: 'content.json', // Ensure this path is correct
+    type: 'GET',
+    dataType: 'json',
+    success: function(data) {
+      if (data.length === 0) {
+        $('#posts').html("<p>No blog posts available at the moment.</p>");
+        return;
+      }
+      let blogPostsHtml = '';
+      data.forEach(function(post) {
+        blogPostsHtml += `
+          <div class="blog-post">
+            <h3>${post.title}</h3>
+            <p><strong>By ${post.author}</strong> | ${post.date}</p>
+            <p>${post.content}</p>
+          </div>
+        `;
+      });
+      $('#posts').html(blogPostsHtml);
+    },
+    error: function(xhr, status, error) {
+      $('#posts').html("<p>Error loading blog posts. Please try again later.</p>");
+      console.error("AJAX Error:", status, error);
+      toastr.error(`Failed to load blog posts: ${error}`);
+    }
+  });
+}
+
+$(document).ready(function() {
+  loadBlogPosts();
+});
+
   </script>
 </body>
 </html>
