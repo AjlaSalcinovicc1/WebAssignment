@@ -155,7 +155,6 @@ tr:hover {
   background-color: #f1c6b5;
   color: white;
 }
-/* Accordion Styling */
 .accordion {
   width: 100%;
   max-width: 600px;
@@ -165,6 +164,27 @@ tr:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.success {
+  color: green;
+  margin-top: 10px;
+}
+.action-buttons {
+  display: flex;
+  gap: 5px;
+}
+button {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+.edit-btn {
+  background-color: #ffc107;
+  color: white;
+}
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
 .accordion-item {
   border-bottom: 1px solid #ccc;
 }
@@ -192,7 +212,7 @@ tr:hover {
 
 .accordion-content {
   padding: 0 15px;
-  display: none; /* Hidden by default */
+  display: none;
   background-color: #f9f9f9;
   padding-bottom: 15px;
   font-size: 14px;
